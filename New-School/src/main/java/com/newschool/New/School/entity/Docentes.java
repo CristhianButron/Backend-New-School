@@ -53,6 +53,6 @@ public class Docentes implements Serializable {
     @JoinColumn(name = "usuarios_id_usuarios", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIdUsuario;
-    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "docentesIdDocente", fetch = FetchType.LAZY)
+   /*  @OneToMany(cascade = CascadeType.ALL, mappedBy = "docentesIdDocente", fetch = FetchType.LAZY)
     private List<Cursos> cursosList;*/
 }

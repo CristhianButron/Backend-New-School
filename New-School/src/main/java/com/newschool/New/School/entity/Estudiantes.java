@@ -31,6 +31,9 @@ import java.util.List;
 @Entity
 @Table(name = "estudiante")
 @NamedQueries({
+    @NamedQuery(name = "Estudiantes.findAll", query = "SELECT e FROM Estudiantes e"),
+    @NamedQuery(name = "Estudiantes.findByIdEstudiante", query = "SELECT e FROM Estudiantes e WHERE e.idEstudiante = :idEstudiante"),
+    @NamedQuery(name = "Estudiantes.findByFechaNacimiento", query = "SELECT e FROM Estudiantes e WHERE e.fechaNacimiento = :fechaNacimiento")
 })
     
 @AllArgsConstructor
@@ -53,7 +56,7 @@ public class Estudiantes implements Serializable {
     @JoinColumn(name = "usuarios_id_usuarios", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIdUsuario;
-   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
     private List<PadresEstudiantes> padresEstudiantesList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
     private List<Respuestas> respuestasList; */
