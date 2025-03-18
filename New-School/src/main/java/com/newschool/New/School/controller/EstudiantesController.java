@@ -33,6 +33,19 @@ public class EstudiantesController {
         return ResponseEntity.ok(savedEstudianteDto);
     }
 
+    @GetMapping("/getEstudiantes")
+    @ResponseBody
+    public List<Estudiantes> getEstudiantes() {
+        return estudiantesService.findAll();
+    }
+
+    @DeleteMapping("/deleteEstudiantes/{id}")
+    @ResponseBody
+    public ResponseEntity<String> deleteEstudiante(@PathVariable Integer id) {
+        estudiantesService.deleteById(id);
+        return ResponseEntity.ok("Estudiante eliminado");
+    }
+
 
 
 }

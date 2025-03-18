@@ -25,10 +25,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "cursos")
 @NamedQueries({
-    @NamedQuery(name = "Cursos.findAll", query = "SELECT c FROM Cursos c"),
-    @NamedQuery(name = "Cursos.findByIdCurso", query = "SELECT c FROM Cursos c WHERE c.idCursos = :idCursos"),
-    @NamedQuery(name = "Cursos.findByNombreCurso", query = "SELECT c FROM Cursos c WHERE c.nombreCurso = :nombreCurso"),
-    @NamedQuery(name = "Cursos.findByDescripcion", query = "SELECT c FROM Cursos c WHERE c.descripcion = :descripcion")})
+})
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -41,8 +38,8 @@ public class Cursos implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_cursos")
-    private Integer idCursos;
+    @Column(name = "id_curso")
+    private Integer idCurso;
 
     @Basic(optional = false)
     @Column(name = "nombre_curso")
@@ -52,18 +49,18 @@ public class Cursos implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @OneToMany(mappedBy = "cursosIdCurso", fetch = FetchType.LAZY)
-    private List<Tareas> tareasList;
+    // @OneToMany(mappedBy = "cursoIdCurso", fetch = FetchType.LAZY)
+    // private List<Tareas> tareasList;
 
-    @OneToMany(mappedBy = "cursosIdCurso", fetch = FetchType.LAZY)
-    private List<Contenidos> contenidosList; 
+    // @OneToMany(mappedBy = "cursosIdCurso", fetch = FetchType.LAZY)
+    // private List<Contenidos> contenidosList; 
     
-    @JoinColumn(name = "docentes_id_docente", referencedColumnName = "id_docente")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Docentes docentesIdDocente;
+    // @JoinColumn(name = "docentes_id_docente", referencedColumnName = "id_docente")
+    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    // private Docentes docentesIdDocente;
 
-    @JoinColumn(name = "grados_id_grado", referencedColumnName = "id_grado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Grados gradosIdGrado;
+    // @JoinColumn(name = "grados_id_grado", referencedColumnName = "id_grado")
+    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    // private Grados gradosIdGrado;
 
 }

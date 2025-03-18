@@ -66,8 +66,8 @@ public class Contenidos implements Serializable {
     @Column(name = "fecha_creacion")
     private LocalDate fecha_creacion;
 
-    @JoinColumn(name = "cursos_id_cursos", referencedColumnName = "id_cursos")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cursos cursosIdCurso; 
+    // @JoinColumn(name = "cursos_id_cursos", referencedColumnName = "id_cursos")
+    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    // private Cursos cursosIdCurso; 
     
 }

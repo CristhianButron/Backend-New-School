@@ -33,6 +33,18 @@ public class EstudiantesService {
 
         return estudiante;
     }
+
+
+    public List<Estudiantes> findAll() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    }
+
+
+    public void deleteById(Integer id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+    }
     
 
 

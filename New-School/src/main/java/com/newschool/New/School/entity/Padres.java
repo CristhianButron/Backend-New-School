@@ -58,6 +58,6 @@ public class Padres implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIdUsuario;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "padresIdpadres", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "padresIdPadres", fetch = FetchType.LAZY)
     private List<PadresEstudiantes> padresEstudiantesList;
 }

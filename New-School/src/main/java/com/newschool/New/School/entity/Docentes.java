@@ -59,6 +59,6 @@ public class Docentes implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIdUsuario;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "docentesIdDocente", fetch = FetchType.LAZY)
-    private List<Cursos> cursosList;
+    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "docentesIdDocente", fetch = FetchType.LAZY)
+    // private List<Cursos> cursosList;
 }

@@ -66,5 +66,5 @@ public class Estudiantes implements Serializable {
     private List<Respuestas> respuestasList; 
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
-    private List<Inscripcion_grados> inscripcion_gradosList;
+    private List<Inscripcion_grados> inscripcionGradosList;
 }

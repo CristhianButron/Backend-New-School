@@ -52,11 +52,11 @@ public class Grados implements Serializable {
     @Column(name = "primaria_secundaria")
     private String primaria_secundaria;
 
-    @OneToMany(mappedBy = "gradosIdgrados", fetch = FetchType.LAZY)
-    private List<Inscripcion_grados> inscripcion_gradosList;
+    // @OneToMany(mappedBy = "gradosIdgrados", fetch = FetchType.LAZY)
+    // private List<Inscripcion_grados> inscripcion_gradosList;
 
-    @JoinColumn(name = "cursos_idcursos" , referencedColumnName = "id_cursos")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cursos cursosIdCursos;
+    // @JoinColumn(name = "cursos_idcursos" , referencedColumnName = "id_cursos")
+    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    // private Cursos cursosIdCursos;
 
 }

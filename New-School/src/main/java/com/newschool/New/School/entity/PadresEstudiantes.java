@@ -41,11 +41,11 @@ public class PadresEstudiantes implements Serializable {
     @Column(name = "id_padres_estudiantes")
     private Integer id_padres_estudiantes;
 
-    @JoinColumn(name = "padres_idpadres", referencedColumnName = "id_padre")
+    @JoinColumn(name = "padres_id_padres", referencedColumnName = "id_padre")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Padres padresIdpadres;
+    private Padres padresIdPadres;
 
-    @JoinColumn(name = "estudiantes_idestudiantes", referencedColumnName = "id_estudiante")
+    @JoinColumn(name = "estudiantes_id_estudiantes", referencedColumnName = "id_estudiante")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Estudiantes estudiantesIdestudiantes;
+    private Estudiantes estudiantesIdEstudiantes;
 }

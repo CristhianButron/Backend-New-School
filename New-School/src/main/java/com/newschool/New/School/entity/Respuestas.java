@@ -60,11 +60,11 @@ public class Respuestas implements Serializable {
     @Column(name = "fecha_entrega") 
     private LocalDate fechaEntrega;
 
-    @JoinColumn(name = "estudiantes_idestudiantes", referencedColumnName = "id_estudiante")
+    @JoinColumn(name = "estudiantes_id_estudiantes", referencedColumnName = "id_estudiante")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Estudiantes estudiantesIdestudiantes;
+    private Estudiantes estudiantesIdEstudiantes;
 
-    @JoinColumn(name = "tareas_idtareas", referencedColumnName = "id_tarea")
+    @JoinColumn(name = "tareas_id_tareas", referencedColumnName = "id_tarea")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Tareas tareasIdtareas;
+    private Tareas tareasIdTareas;
 }

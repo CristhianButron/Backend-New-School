@@ -50,12 +50,12 @@ public class Inscripcion_grados implements Serializable {
     @Column(name = "gestion")
     private String gestion;
 
-    @JoinColumn(name = "grados_idgrados", referencedColumnName = "id_grado")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Grados gradosIdGrados;
+    // @JoinColumn(name = "grados_idgrados", referencedColumnName = "id_grado")
+    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    // private Grados gradosIdGrados;
 
 
-    @JoinColumn(name = "estudiantes_idestudiantes", referencedColumnName = "id_estudiante")
+    @JoinColumn(name = "estudiantes_id_estudiantes", referencedColumnName = "id_estudiante")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Estudiantes estudiantesIdEstudiantes;
 }

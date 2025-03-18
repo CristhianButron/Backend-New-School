@@ -68,11 +68,11 @@ public class Tareas implements Serializable {
     @Column(name = "puntaje_maximo")
     private int puntaje_maximo;
 
-    @OneToMany(mappedBy = "tareasIdtareas", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "tareasIdTareas", fetch = FetchType.LAZY)
     private List<Respuestas> RespuestasList;
 
-    @JoinColumn(name = "cursos_id_cursos", referencedColumnName = "id_cursos")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cursos cursoIdCurso;
+    // @JoinColumn(name = "cursos_id_cursos", referencedColumnName = "id_curso")
+    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    // private Curso cursoIdCurso;
     
 }
