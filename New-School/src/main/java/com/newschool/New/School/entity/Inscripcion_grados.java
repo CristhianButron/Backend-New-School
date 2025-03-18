@@ -1,7 +1,7 @@
 package com.newschool.New.School.entity;
 
 import java.io.Serializable;
-import java.util.List;
+
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -14,7 +14,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,11 +22,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "grados")
+@Table(name = "inscripciongrados")
 @NamedQueries({
-    @NamedQuery(name = "Grados.findAll", query = "SELECT g FROM Grados g"),
-    @NamedQuery(name = "Grados.findByIdGrados", query = "SELECT g FROM Grados g WHERE g.id_grados = :id_grados"),
-    @NamedQuery(name = "Grados.findByDescripcion", query = "SELECT g FROM Grados g WHERE g.descripcion = :descripcion"),
+    @NamedQuery(name = "Inscripcion_grados.findAll", query = "SELECT i FROM Inscripcion_grados i"),
+    @NamedQuery(name = "Inscripcion_grados.findByIdInscripcionGrados", query = "SELECT i FROM Inscripcion_grados i WHERE i.id_inscripcion_grados = :id_inscripcion_grados"),
 })
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,28 +33,29 @@ import lombok.ToString;
 @Setter
 @ToString
 
-public class Grados implements Serializable {
+public class Inscripcion_grados implements Serializable {
     
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_grado")
-    private Integer id_grados;
+    @Column(name = "id_inscripcion_grados")
+    private Integer id_inscripcion_grados;
 
     @Basic (optional = false)
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Column(name = "fecha_inscripcion")
+    private String fecha_inscripcion;
 
     @Basic (optional = false)
-    @Column(name = "primaria_secundaria")
-    private String primaria_secundaria;
+    @Column(name = "gestion")
+    private String gestion;
 
-    @OneToMany(mappedBy = "gradosIdgrados", fetch = FetchType.LAZY)
-    private List<Inscripcion_grados> inscripcion_gradosList;
-
-    @JoinColumn(name = "cursos_idcursos" , referencedColumnName = "id_cursos")
+    @JoinColumn(name = "grados_idgrados", referencedColumnName = "id_grado")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cursos cursosIdCursos;
+    private Grados gradosIdGrados;
 
+
+    @JoinColumn(name = "estudiantes_idestudiantes", referencedColumnName = "id_estudiante")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Estudiantes estudiantesIdEstudiantes;
 }

@@ -50,14 +50,21 @@ public class Estudiantes implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_estudiante")
     private Integer idEstudiante;
+
     @Basic(optional = false)
     @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;
+
     @JoinColumn(name = "usuarios_id_usuarios", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIdUsuario;
-    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
-    private List<PadresEstudiantes> padresEstudiantesList;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
-    private List<Respuestas> respuestasList; */
+    private List<PadresEstudiantes> padresEstudiantesList;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
+    private List<Respuestas> respuestasList; 
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
+    private List<Inscripcion_grados> inscripcion_gradosList;
 }

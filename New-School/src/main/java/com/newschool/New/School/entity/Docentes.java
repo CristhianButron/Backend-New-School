@@ -31,6 +31,9 @@ import java.util.List;
 @Entity
 @Table(name = "docente")
 @NamedQueries({
+    @NamedQuery(name = "Docentes.findAll", query = "SELECT d FROM Docentes d"),
+    @NamedQuery(name = "Docentes.findByIdDocente", query = "SELECT d FROM Docentes d WHERE d.idDocente = :idDocente"),
+    @NamedQuery(name = "Docentes.findByLicenciatura", query = "SELECT d FROM Docentes d WHERE d.licenciatura = :licenciatura")
 })
     
 @AllArgsConstructor
@@ -47,12 +50,15 @@ public class Docentes implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_docente")
     private Integer idDocente;
+
     @Basic(optional = false)
     @Column(name = "licenciatura")
     private LocalDate licenciatura;
+
     @JoinColumn(name = "usuarios_id_usuarios", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIdUsuario;
-   /*  @OneToMany(cascade = CascadeType.ALL, mappedBy = "docentesIdDocente", fetch = FetchType.LAZY)
-    private List<Cursos> cursosList;*/
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "docentesIdDocente", fetch = FetchType.LAZY)
+    private List<Cursos> cursosList;
 }

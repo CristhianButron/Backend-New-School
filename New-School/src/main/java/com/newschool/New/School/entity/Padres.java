@@ -25,13 +25,15 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
+
 
 @Entity
 @Table(name = "padre")
 @NamedQueries({
-})
+    @NamedQuery(name = "Padres.findAll", query = "SELECT p FROM Padres p"),
+    @NamedQuery(name = "Padres.findByIdpadre", query = "SELECT p FROM Padres p WHERE p.idpadre = :idpadre"),
+    @NamedQuery(name = "Padres.findByParentesco", query = "SELECT p FROM Padres p WHERE p.parentesco = :parentesco")})
     
 @AllArgsConstructor
 @NoArgsConstructor
@@ -47,12 +49,15 @@ public class Padres implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_padre")
     private Integer idpadre;
+
     @Basic(optional = false)
     @Column(name = "parentesco")
     private String parentesco;
+
     @JoinColumn(name = "usuarios_id_usuarios", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIdUsuario;
-    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "padresIdpadres", fetch = FetchType.LAZY)
-    private List<PadresEstudiantes> padresEstudiantesList;*/
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "padresIdpadres", fetch = FetchType.LAZY)
+    private List<PadresEstudiantes> padresEstudiantesList;
 }
