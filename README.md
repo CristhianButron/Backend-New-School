@@ -42,18 +42,6 @@ New School es una aplicación de backend para un sistema de gestión de aprendiz
     ./mvnw spring-boot:run
     ```
 
-## Endpoints
-
-La aplicación expone varios endpoints RESTful para gestionar usuarios y estudiantes. Aquí hay algunos ejemplos:
-
-- **Usuarios**
-    - `GET /api/v1/usuario/getUsuarios`: Obtiene la lista de todos los usuarios.
-    - `GET /api/v1/usuario/getUsuarios/{id}`: Obtiene un usuario por su ID.
-
-- **Estudiantes**
-    - `GET /api/v1/estudiantes/getEstudiantes/{id}`: Obtiene un estudiante por su ID.
-    - `POST /api/v1/estudiantes/postEstudiantes`: Guarda un nuevo estudiante.
-
 ## Estructura del Proyecto
 
 El proyecto sigue la estructura estándar de un proyecto Spring Boot:
