@@ -10,8 +10,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
@@ -52,11 +50,7 @@ public class Grados implements Serializable {
     @Column(name = "primaria_secundaria")
     private String primaria_secundaria;
 
-    // @OneToMany(mappedBy = "gradosIdgrados", fetch = FetchType.LAZY)
-    // private List<Inscripcion_grados> inscripcion_gradosList;
-
-    // @JoinColumn(name = "cursos_idcursos" , referencedColumnName = "id_cursos")
-    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    // private Cursos cursosIdCursos;
+    @OneToMany(mappedBy = "gradosIdGrados", fetch = FetchType.LAZY)
+    private List<Inscripcion_grados> inscripcionGradosList;
 
 }

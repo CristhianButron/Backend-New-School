@@ -23,8 +23,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "cursos")
+@Table(name = "curso")
 @NamedQueries({
+    @NamedQuery(name = "Cursos.findAll", query = "SELECT c FROM Cursos c"),
+    @NamedQuery(name = "Cursos.findByIdCurso", query = "SELECT c FROM Cursos c WHERE c.idCurso = :idCurso"),
 })
 @AllArgsConstructor
 @NoArgsConstructor
@@ -49,18 +51,17 @@ public class Cursos implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
 
-    // @OneToMany(mappedBy = "cursoIdCurso", fetch = FetchType.LAZY)
-    // private List<Tareas> tareasList;
+    @OneToMany(mappedBy = "cursoIdCurso", fetch = FetchType.LAZY)
+    private List<Tareas> tareasList;
 
-    // @OneToMany(mappedBy = "cursosIdCurso", fetch = FetchType.LAZY)
-    // private List<Contenidos> contenidosList; 
+    @OneToMany(mappedBy = "cursoIdCurso", fetch = FetchType.LAZY)
+    private List<Contenidos> contenidosList; 
+
+    @OneToMany(mappedBy = "cursoIdCurso", fetch = FetchType.LAZY)
+    private List<Inscripcion_grados> inscripcionGradosList;
     
-    // @JoinColumn(name = "docentes_id_docente", referencedColumnName = "id_docente")
-    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    // private Docentes docentesIdDocente;
-
-    // @JoinColumn(name = "grados_id_grado", referencedColumnName = "id_grado")
-    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    // private Grados gradosIdGrado;
+    @JoinColumn(name = "docentes_id_docente", referencedColumnName = "id_docente")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Docentes docentesIdDocente;
 
 }

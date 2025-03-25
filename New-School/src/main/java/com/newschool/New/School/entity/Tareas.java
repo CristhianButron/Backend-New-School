@@ -71,8 +71,8 @@ public class Tareas implements Serializable {
     @OneToMany(mappedBy = "tareasIdTareas", fetch = FetchType.LAZY)
     private List<Respuestas> RespuestasList;
 
-    // @JoinColumn(name = "cursos_id_cursos", referencedColumnName = "id_curso")
-    // @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    // private Curso cursoIdCurso;
+    @JoinColumn(name = "cursos_id_cursos", referencedColumnName = "id_curso")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Cursos cursoIdCurso;
     
 }
