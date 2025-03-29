@@ -49,7 +49,7 @@ public class Administrativos implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "Cargo")
-    private LocalDate cargo;
+    private String cargo;
 
     @JoinColumn(name = "usuarios_id_usuarios", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

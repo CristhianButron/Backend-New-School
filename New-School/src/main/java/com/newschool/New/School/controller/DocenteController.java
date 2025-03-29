@@ -1,0 +1,93 @@
+package com.newschool.New.School.controller;
+
+import com.newschool.New.School.dto.docente.DocenteDTO;
+import com.newschool.New.School.dto.docente.DocenteRequestDTO;
+import com.newschool.New.School.dto.docente.DocenteResponseDTO;
+import com.newschool.New.School.service.DocenteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/v1/docentes")
+@CrossOrigin(origins = "*")
+public class DocenteController {
+
+    @Autowired
+    private DocenteService docenteService;
+
+    @GetMapping
+    public ResponseEntity<List<DocenteDTO>> listaDocentes() {
+        return ResponseEntity.ok(docenteService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DocenteDTO> getDocenteById(@PathVariable Integer id) {
+        DocenteDTO docenteDTO = docenteService.findById(id);
+        if (docenteDTO != null) {
+            return ResponseEntity.ok(docenteDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/usuario/{usuarioId}")
+    public ResponseEntity<DocenteDTO> getDocenteByUsuarioId(@PathVariable Integer usuarioId) {
+        DocenteDTO docenteDTO = docenteService.findByUsuarioId(usuarioId);
+        if (docenteDTO != null) {
+            return ResponseEntity.ok(docenteDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<DocenteResponseDTO> createDocente(
+            @RequestPart("docente") DocenteRequestDTO docenteRequestDTO,
+            @RequestPart(value = "titulo", required = false) MultipartFile titulo) {
+        try {
+            if (titulo != null) {
+                docenteRequestDTO.setTitulo(titulo.getBytes());
+            }
+            DocenteResponseDTO createdDocente = docenteService.createDocente(docenteRequestDTO);
+            return new ResponseEntity<>(createdDocente, HttpStatus.CREATED);
+        } catch (IOException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<DocenteResponseDTO> updateDocente(
+            @PathVariable Integer id,
+            @RequestPart("docente") DocenteRequestDTO docenteRequestDTO,
+            @RequestPart(value = "titulo", required = false) MultipartFile titulo) {
+        try {
+            if (titulo != null) {
+                docenteRequestDTO.setTitulo(titulo.getBytes());
+            }
+            DocenteResponseDTO updatedDocente = docenteService.updateDocente(id, docenteRequestDTO);
+            if (updatedDocente != null) {
+                return ResponseEntity.ok(updatedDocente);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (IOException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteDocente(@PathVariable Integer id) {
+        boolean deleted = docenteService.deleteDocente(id);
+        if (deleted) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
