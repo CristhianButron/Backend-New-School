@@ -1,0 +1,178 @@
+2025-04-01 15:11:07,952 INFO o.s.b.StartupInfoLogger [main] Starting NewSchoolApplication using Java 23.0.2 with PID 13508 (D:\Github\Backend-New-School\New-School\target\classes started by Dylan in D:\Github\Backend-New-School)
+2025-04-01 15:11:07,955 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-04-01 15:11:09,875 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-01 15:11:10,156 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 268 ms. Found 5 JPA repository interfaces.
+2025-04-01 15:11:11,232 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2025-04-01 15:11:11,269 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-01 15:11:11,274 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2025-04-01 15:11:11,275 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-01 15:11:11,486 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2025-04-01 15:11:11,487 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 3438 ms
+2025-04-01 15:11:11,794 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-01 15:11:11,907 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-01 15:11:11,985 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2025-04-01 15:11:12,475 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-01 15:11:12,527 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2025-04-01 15:11:12,970 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@362cf66
+2025-04-01 15:11:12,975 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2025-04-01 15:11:13,060 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-01 15:11:13,117 INFO o.h.e.j.e.i.JdbcEnvironmentInitiator [main] HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-01 15:11:15,139 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-01 15:11:16,204 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01 15:11:16,896 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-01 15:11:17,441 INFO o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [main] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-04-01 15:11:17,441 WARN o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-04-01 15:11:17,745 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-01 15:11:18,413 INFO o.s.v.b.OptionalValidatorFactoryBean [main] Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-01 15:11:18,935 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2025-04-01 15:11:18,979 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2025-04-01 15:11:19,008 INFO o.s.b.StartupInfoLogger [main] Started NewSchoolApplication in 12.109 seconds (process running for 13.332)
+2025-04-01 15:11:44,681 INFO o.s.b.w.e.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-01 15:11:44,689 INFO o.s.b.w.e.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2025-04-01 15:11:44,697 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01 15:11:44,700 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2025-04-01 15:11:44,707 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2025-04-01 15:12:01,250 INFO o.s.b.StartupInfoLogger [main] Starting NewSchoolApplication using Java 23.0.2 with PID 7944 (D:\Github\Backend-New-School\New-School\target\classes started by Dylan in D:\Github\Backend-New-School)
+2025-04-01 15:12:01,253 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-04-01 15:12:02,844 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-01 15:12:03,118 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 250 ms. Found 5 JPA repository interfaces.
+2025-04-01 15:12:04,185 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2025-04-01 15:12:04,213 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-01 15:12:04,217 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2025-04-01 15:12:04,218 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-01 15:12:04,320 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2025-04-01 15:12:04,321 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2977 ms
+2025-04-01 15:12:04,589 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-01 15:12:04,695 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-01 15:12:04,751 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2025-04-01 15:12:05,222 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-01 15:12:05,285 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2025-04-01 15:12:05,734 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@355493bf
+2025-04-01 15:12:05,738 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2025-04-01 15:12:05,819 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-01 15:12:05,880 INFO o.h.e.j.e.i.JdbcEnvironmentInitiator [main] HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-01 15:12:07,887 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-01 15:12:09,009 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01 15:12:09,731 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-01 15:12:10,211 INFO o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [main] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-04-01 15:12:10,212 WARN o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-04-01 15:12:10,507 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-01 15:12:11,228 INFO o.s.v.b.OptionalValidatorFactoryBean [main] Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-01 15:12:11,742 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2025-04-01 15:12:11,800 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2025-04-01 15:12:11,830 INFO o.s.b.StartupInfoLogger [main] Started NewSchoolApplication in 11.549 seconds (process running for 13.047)
+2025-04-01 15:37:09,886 WARN c.z.h.p.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m55s689ms36µs400ns).
+2025-04-01 15:42:07,291 INFO o.s.b.StartupInfoLogger [main] Starting NewSchoolApplication using Java 23.0.2 with PID 16020 (D:\Github\Backend-New-School\New-School\target\classes started by Dylan in D:\Github\Backend-New-School)
+2025-04-01 15:42:07,294 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-04-01 15:42:08,652 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-01 15:42:08,898 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 228 ms. Found 5 JPA repository interfaces.
+2025-04-01 15:42:09,711 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2025-04-01 15:42:09,733 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-01 15:42:09,738 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2025-04-01 15:42:09,740 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-01 15:42:09,867 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2025-04-01 15:42:09,869 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2479 ms
+2025-04-01 15:42:10,091 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-01 15:42:10,188 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-01 15:42:10,247 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2025-04-01 15:42:10,630 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-01 15:42:10,681 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2025-04-01 15:42:10,988 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@65259c53
+2025-04-01 15:42:10,991 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2025-04-01 15:42:11,059 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-01 15:42:11,098 INFO o.h.e.j.e.i.JdbcEnvironmentInitiator [main] HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-01 15:42:12,620 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-01 15:42:13,483 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01 15:42:14,003 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-01 15:42:14,379 INFO o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [main] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-04-01 15:42:14,380 WARN o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-04-01 15:42:14,601 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-01 15:42:15,096 INFO o.s.v.b.OptionalValidatorFactoryBean [main] Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-01 15:42:15,427 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2025-04-01 15:42:15,435 WARN o.s.c.s.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-04-01 15:42:15,442 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01 15:42:15,445 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2025-04-01 15:42:15,456 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2025-04-01 15:42:15,490 INFO o.s.b.a.l.ConditionEvaluationReportLogger [main] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-04-01 15:42:15,517 ERROR o.s.b.d.LoggingFailureAnalysisReporter [main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-04-01 15:42:22,827 INFO o.s.b.w.e.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-01 15:42:22,861 INFO o.s.b.w.e.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2025-04-01 15:42:22,901 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01 15:42:22,903 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2025-04-01 15:42:22,907 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2025-04-01 15:42:29,373 INFO o.s.b.StartupInfoLogger [main] Starting NewSchoolApplication using Java 23.0.2 with PID 12788 (D:\Github\Backend-New-School\New-School\target\classes started by Dylan in D:\Github\Backend-New-School)
+2025-04-01 15:42:29,378 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-04-01 15:42:30,733 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-01 15:42:30,920 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 174 ms. Found 5 JPA repository interfaces.
+2025-04-01 15:42:31,788 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2025-04-01 15:42:31,821 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-01 15:42:31,828 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2025-04-01 15:42:31,829 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-01 15:42:31,963 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2025-04-01 15:42:31,965 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2490 ms
+2025-04-01 15:42:32,182 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-01 15:42:32,294 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-01 15:42:32,353 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2025-04-01 15:42:32,755 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-01 15:42:32,802 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2025-04-01 15:42:33,103 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@45311a99
+2025-04-01 15:42:33,106 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2025-04-01 15:42:33,158 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-01 15:42:33,205 INFO o.h.e.j.e.i.JdbcEnvironmentInitiator [main] HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-01 15:42:34,627 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-01 15:42:35,375 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-01 15:42:35,889 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-01 15:42:36,256 INFO o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [main] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-04-01 15:42:36,258 WARN o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-04-01 15:42:36,491 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-01 15:42:37,092 INFO o.s.v.b.OptionalValidatorFactoryBean [main] Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-04-01 15:42:37,419 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2025-04-01 15:42:37,448 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2025-04-01 15:42:37,465 INFO o.s.b.StartupInfoLogger [main] Started NewSchoolApplication in 8.929 seconds (process running for 9.47)
+2025-04-01 15:43:12,525 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-01 15:43:12,527 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2025-04-01 15:43:12,529 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2025-04-01 15:43:13,676 INFO o.s.a.AbstractOpenApiResource [http-nio-8080-exec-9] Init duration for springdoc-openapi is: 726 ms
