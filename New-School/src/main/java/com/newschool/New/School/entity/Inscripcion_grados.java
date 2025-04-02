@@ -2,7 +2,6 @@ package com.newschool.New.School.entity;
 
 import java.io.Serializable;
 
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,36 +23,35 @@ import lombok.ToString;
 @Entity
 @Table(name = "inscripciongrados")
 @NamedQueries({
-    @NamedQuery(name = "Inscripcion_grados.findAll", query = "SELECT i FROM Inscripcion_grados i"),
-    @NamedQuery(name = "Inscripcion_grados.findByIdInscripcionGrados", query = "SELECT i FROM Inscripcion_grados i WHERE i.id_inscripcion_grados = :id_inscripcion_grados"),
+        @NamedQuery(name = "Inscripcion_grados.findAll", query = "SELECT i FROM Inscripcion_grados i"),
+        @NamedQuery(name = "Inscripcion_grados.findByIdInscripcionGrados", query = "SELECT i FROM Inscripcion_grados i WHERE i.idInscripcionGrados = :idInscripcionGrados"),
 })
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-
 public class Inscripcion_grados implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_inscripcion_grados")
-    private Integer id_inscripcion_grados;
+    private Integer idInscripcionGrados;
 
-    @Basic (optional = false)
+    @Basic(optional = false)
     @Column(name = "fecha_inscripcion")
-    private String fecha_inscripcion;
+    private String fechaInscripcion;
 
-    @Basic (optional = false)
+    @Basic(optional = false)
     @Column(name = "gestion")
     private String gestion;
 
-    @JoinColumn(name = "grados_id_grados", referencedColumnName = "id_grado")
+    @JoinColumn(name = "grados_id_grados", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Grados gradosIdGrados;
-
 
     @JoinColumn(name = "estudiantes_id_estudiantes", referencedColumnName = "id_estudiante")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
