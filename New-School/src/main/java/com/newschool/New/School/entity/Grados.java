@@ -50,6 +50,6 @@ public class Grados implements Serializable {
     @Column(name = "primaria_secundaria")
     private Boolean primaria_secundaria;
 
-    @OneToMany(mappedBy = "gradosIdGrados", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "grado", fetch = FetchType.LAZY)
     private List<Inscripcion_grados> inscripcionGradosList;
 }
