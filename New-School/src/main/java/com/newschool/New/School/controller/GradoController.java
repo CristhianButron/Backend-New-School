@@ -1,6 +1,8 @@
 package com.newschool.New.School.controller;
 
 import com.newschool.New.School.dto.grado.GradoDTO;
+import com.newschool.New.School.exception.ErrorResponse;
+import com.newschool.New.School.exception.ValidationErrorResponse;
 import com.newschool.New.School.service.GradoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -14,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -43,14 +46,13 @@ public class GradoController {
             @ApiResponse(responseCode = "200", description = "Grado encontrado",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = GradoDTO.class))),
             @ApiResponse(responseCode = "404", description = "Grado no encontrado",
-                    content = @Content)
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
     })
     @GetMapping("/{id}")
     public ResponseEntity<GradoDTO> getGradoById(
             @Parameter(description = "ID del grado a buscar", required = true) @PathVariable Integer id) {
-        return gradoService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        // No necesitamos manejar el Optional aquí, ya que el servicio lanza una excepción
+        return ResponseEntity.ok(gradoService.findById(id));
     }
 
     @Operation(summary = "Buscar grado por descripción", description = "Busca un grado escolar por su descripción exacta")
@@ -58,14 +60,13 @@ public class GradoController {
             @ApiResponse(responseCode = "200", description = "Grado encontrado",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = GradoDTO.class))),
             @ApiResponse(responseCode = "404", description = "Grado no encontrado",
-                    content = @Content)
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
     })
     @GetMapping("/descripcion/{descripcion}")
     public ResponseEntity<GradoDTO> getGradoByDescripcion(
             @Parameter(description = "Descripción del grado a buscar", required = true) @PathVariable String descripcion) {
-        return gradoService.findByDescripcion(descripcion)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        // No necesitamos manejar el Optional aquí, ya que el servicio lanza una excepción
+        return ResponseEntity.ok(gradoService.findByDescripcion(descripcion));
     }
 
     @Operation(summary = "Filtrar grados por nivel", description = "Filtra los grados según sean de primaria o secundaria")
@@ -83,12 +84,14 @@ public class GradoController {
     @Operation(summary = "Crear un nuevo grado", description = "Crea un nuevo grado escolar en el sistema")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Grado creado exitosamente",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = GradoDTO.class)))
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = GradoDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Datos de grado inválidos",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class)))
     })
     @PostMapping
     public ResponseEntity<GradoDTO> createGrado(
             @Parameter(description = "Datos del grado a crear", required = true)
-            @RequestBody GradoDTO gradoDTO) {
+            @Valid @RequestBody GradoDTO gradoDTO) {
         return new ResponseEntity<>(gradoService.save(gradoDTO), HttpStatus.CREATED);
     }
 
@@ -97,27 +100,31 @@ public class GradoController {
             @ApiResponse(responseCode = "200", description = "Grado actualizado exitosamente",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = GradoDTO.class))),
             @ApiResponse(responseCode = "404", description = "Grado no encontrado",
-                    content = @Content)
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
+            @ApiResponse(responseCode = "400", description = "Datos de grado inválidos",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class)))
     })
     @PutMapping("/{id}")
     public ResponseEntity<GradoDTO> updateGrado(
             @Parameter(description = "ID del grado a actualizar", required = true) @PathVariable Integer id,
-            @Parameter(description = "Nuevos datos del grado", required = true) @RequestBody GradoDTO gradoDTO) {
-        return gradoService.update(id, gradoDTO)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+            @Parameter(description = "Nuevos datos del grado", required = true) @Valid @RequestBody GradoDTO gradoDTO) {
+        // No necesitamos manejar el Optional aquí, ya que el servicio lanza una excepción
+        return ResponseEntity.ok(gradoService.update(id, gradoDTO));
     }
 
     @Operation(summary = "Eliminar un grado", description = "Elimina un grado escolar del sistema")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Grado eliminado exitosamente"),
-            @ApiResponse(responseCode = "404", description = "Grado no encontrado")
+            @ApiResponse(responseCode = "404", description = "Grado no encontrado",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
+            @ApiResponse(responseCode = "400", description = "No se puede eliminar el grado porque tiene dependencias",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteGrado(
             @Parameter(description = "ID del grado a eliminar", required = true) @PathVariable Integer id) {
-        return gradoService.deleteById(id)
-                ? ResponseEntity.noContent().build()
-                : ResponseEntity.notFound().build();
+        // El servicio lanza una excepción si no encuentra el grado o si tiene dependencias
+        gradoService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
