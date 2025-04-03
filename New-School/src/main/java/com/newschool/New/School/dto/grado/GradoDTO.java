@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Schema(description = "Información de un grado escolar")
 public class GradoDTO {
 
-    @Schema(description = "Identificador único del grado", example = "1")
+    @Schema(description = "Identificador único del grado",hidden = true)
     private Integer id;
 
     @Schema(description = "Nombre o descripción del grado", example = "Primer Grado de Primaria")
