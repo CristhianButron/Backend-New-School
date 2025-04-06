@@ -31,14 +31,14 @@ public class GradoService {
     public GradoDTO findById(Integer id) {
         return gradoRepository.findById(id)
                 .map(gradoMapper::toDTO)
-                .orElse(null);
+                .orElseThrow(() -> new RuntimeException("Grado no encontrado"));
     }
 
     @Transactional(readOnly = true)
     public GradoDTO findByDescripcion(String descripcion) {
         return gradoRepository.findByDescripcion(descripcion)
                 .map(gradoMapper::toDTO)
-                .orElse(null);
+                .orElseThrow(() -> new RuntimeException("Grado con descripción '" + descripcion + "' no encontrado"));
     }
 
     @Transactional(readOnly = true)
@@ -53,7 +53,7 @@ public class GradoService {
         // Verificar si ya existe un grado con la misma descripción
         if (gradoDTO.getDescripcion() != null) {
             if (gradoRepository.findByDescripcion(gradoDTO.getDescripcion()).isPresent()) {
-                return null;
+                throw new RuntimeException("Ya existe un grado con la descripción: " + gradoDTO.getDescripcion());
             }
         }
 
@@ -66,18 +66,15 @@ public class GradoService {
     public GradoDTO update(Integer id, GradoDTO gradoDTO) {
         validateGradoDTO(gradoDTO);
 
-        var existingGradoOptional = gradoRepository.findById(id);
-        if (existingGradoOptional.isEmpty()) {
-            return null;
-        }
-
-        Grados existingGrado = existingGradoOptional.get();
+        // Verificar si el grado existe
+        Grados existingGrado = gradoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Grado no encontrado"));
 
         // Verificar si ya existe otro grado con la misma descripción (que no sea el actual)
         if (gradoDTO.getDescripcion() != null) {
             var existingWithSameDesc = gradoRepository.findByDescripcion(gradoDTO.getDescripcion());
             if (existingWithSameDesc.isPresent() && !existingWithSameDesc.get().getId().equals(id)) {
-                return null;
+                throw new RuntimeException("Ya existe otro grado con la descripción: " + gradoDTO.getDescripcion());
             }
         }
 
@@ -86,38 +83,36 @@ public class GradoService {
     }
 
     @Transactional
-    public boolean deleteById(Integer id) {
+    public void deleteById(Integer id) {
+        // Verificar si el grado existe
         if (!gradoRepository.existsById(id)) {
-            return false;
+            throw new RuntimeException("Grado no encontrado");
         }
 
-        // Aquí podrías verificar si el grado tiene alumnos asociados antes de eliminarlo
+        // Aquí podrías verificar si el grado tiene alumnos o inscripciones asociadas antes de eliminarlo
         // Por ejemplo:
-        // if (alumnoRepository.existsByGradoId(id)) {
-        //     return false;
+        // if (inscripcionGradoRepository.existsByGradoId(id)) {
+        //     throw new RuntimeException("No se puede eliminar el grado porque tiene inscripciones asociadas");
         // }
 
         gradoRepository.deleteById(id);
-        return true;
     }
 
-    private boolean validateGradoDTO(GradoDTO gradoDTO) {
+    private void validateGradoDTO(GradoDTO gradoDTO) {
         if (gradoDTO.getDescripcion() == null || gradoDTO.getDescripcion().trim().isEmpty()) {
-            return false;
+            throw new RuntimeException("La descripción del grado no puede estar vacía");
         }
 
         if (gradoDTO.getDescripcion().length() < 3) {
-            return false;
+            throw new RuntimeException("La descripción del grado debe tener al menos 3 caracteres");
         }
 
         if (gradoDTO.getDescripcion().length() > 100) {
-            return false;
+            throw new RuntimeException("La descripción del grado no puede exceder los 100 caracteres");
         }
 
         if (gradoDTO.getPrimariaSencundaria() == null) {
-            return false;
+            throw new RuntimeException("Debe especificar si el grado es de primaria o secundaria");
         }
-
-        return true;
     }
 }

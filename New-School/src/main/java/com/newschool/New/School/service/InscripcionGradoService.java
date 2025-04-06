@@ -114,4 +114,10 @@ public class InscripcionGradoService {
         return inscripcionRepository.findById(id)
                 .map(mapper::toDTO);
     }
+
+    @Transactional(readOnly = true)
+    public List<InscripcionGradoDTO> obtenerTodos() {
+        List<Inscripcion_grados> inscripciones = inscripcionRepository.findAll();
+        return mapper.toDTOList(inscripciones);
+    }
 }
