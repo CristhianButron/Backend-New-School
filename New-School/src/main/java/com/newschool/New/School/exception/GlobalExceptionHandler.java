@@ -4,67 +4,41 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-@ControllerAdvice
+// Limitar el controllerAdvice a los controladores para evitar que interfiera con Swagger
+@RestControllerAdvice(basePackages = "com.newschool.New.School.controller")
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleResourceNotFoundException(
-            ResourceNotFoundException ex, HttpServletRequest request) {
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ErrorResponse> handleRuntimeException(RuntimeException ex) {
+        HttpStatus status;
+
+        if (ex.getMessage().contains("no encontrado") || ex.getMessage().contains("no encontrada")) {
+            status = HttpStatus.NOT_FOUND;
+        } else if (ex.getMessage().contains("Conflicto") || ex.getMessage().contains("ya está inscrito")) {
+            status = HttpStatus.CONFLICT;
+        } else {
+            status = HttpStatus.BAD_REQUEST;
+        }
 
         ErrorResponse errorResponse = new ErrorResponse(
-                HttpStatus.NOT_FOUND.value(),
+                status.value(),
                 ex.getMessage(),
-                LocalDateTime.now(),
-                request.getRequestURI()
+                LocalDateTime.now()
         );
 
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<ErrorResponse> handleBadRequestException(
-            BadRequestException ex, HttpServletRequest request) {
-
-        ErrorResponse errorResponse = new ErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                ex.getMessage(),
-                LocalDateTime.now(),
-                request.getRequestURI()
-        );
-
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(ValidationException.class)
-    public ResponseEntity<ValidationErrorResponse> handleValidationException(
-            ValidationException ex, HttpServletRequest request) {
-
-        ValidationErrorResponse errorResponse = new ValidationErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                ex.getMessage(),
-                LocalDateTime.now(),
-                request.getRequestURI(),
-                ex.getErrors()
-        );
-
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorResponse, status);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ValidationErrorResponse> handleMethodArgumentNotValidException(
-            MethodArgumentNotValidException ex, HttpServletRequest request) {
-
+    public ResponseEntity<ValidationErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
-
         ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
@@ -73,26 +47,67 @@ public class GlobalExceptionHandler {
 
         ValidationErrorResponse errorResponse = new ValidationErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
-                "Error de validación",
+                "Error de validación en los datos de entrada",
                 LocalDateTime.now(),
-                request.getRequestURI(),
                 errors
         );
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGlobalException(
-            Exception ex, HttpServletRequest request) {
+    // Clases para formatear las respuestas de error
+    public static class ErrorResponse {
+        private int status;
+        private String message;
+        private LocalDateTime timestamp;
 
-        ErrorResponse errorResponse = new ErrorResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Ha ocurrido un error interno en el servidor: " + ex.getMessage(),
-                LocalDateTime.now(),
-                request.getRequestURI()
-        );
+        public ErrorResponse(int status, String message, LocalDateTime timestamp) {
+            this.status = status;
+            this.message = message;
+            this.timestamp = timestamp;
+        }
 
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        // Getters y setters
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+
+        public LocalDateTime getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(LocalDateTime timestamp) {
+            this.timestamp = timestamp;
+        }
+    }
+
+    public static class ValidationErrorResponse extends ErrorResponse {
+        private Map<String, String> fieldErrors;
+
+        public ValidationErrorResponse(int status, String message, LocalDateTime timestamp, Map<String, String> fieldErrors) {
+            super(status, message, timestamp);
+            this.fieldErrors = fieldErrors;
+        }
+
+        // Getter y setter
+        public Map<String, String> getFieldErrors() {
+            return fieldErrors;
+        }
+
+        public void setFieldErrors(Map<String, String> fieldErrors) {
+            this.fieldErrors = fieldErrors;
+        }
     }
 }

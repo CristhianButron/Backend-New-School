@@ -30,8 +30,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String authorizationHeader = request.getHeader("Authorization");
         final String requestPath = request.getServletPath();
 
+        // Comienza agregando logs de depuración
+        logger.debug("Processing request: " + requestPath);
+
+
         // Permitir las solicitudes a los endpoints de autenticación sin token
-        if (requestPath.startsWith("/api/v1/auth/")) {
+        if (requestPath.startsWith("/api/v1/auth/") ||
+                requestPath.startsWith("/v3/api-docs") ||
+                requestPath.startsWith("/swagger-ui") ||
+                requestPath.startsWith("/swagger-resources") ||
+                requestPath.startsWith("/webjars/")) {
+
+            logger.debug("Skipping JWT authentication for path: " + requestPath);
             filterChain.doFilter(request, response);
             return;
         }
