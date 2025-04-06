@@ -11,7 +11,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestControllerAdvice
+// Limitar el controllerAdvice a los controladores para evitar que interfiera con Swagger
+@RestControllerAdvice(basePackages = "com.newschool.New.School.controller")
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
