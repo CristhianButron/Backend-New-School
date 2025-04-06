@@ -1,8 +1,6 @@
 package com.newschool.New.School.controller;
 
 import com.newschool.New.School.dto.grado.GradoDTO;
-import com.newschool.New.School.exception.ErrorResponse;
-import com.newschool.New.School.exception.ValidationErrorResponse;
 import com.newschool.New.School.service.GradoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -45,8 +43,7 @@ public class GradoController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Grado encontrado",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = GradoDTO.class))),
-            @ApiResponse(responseCode = "404", description = "Grado no encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "404", description = "Grado no encontrado")
     })
     @GetMapping("/{id}")
     public ResponseEntity<GradoDTO> getGradoById(
@@ -59,8 +56,7 @@ public class GradoController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Grado encontrado",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = GradoDTO.class))),
-            @ApiResponse(responseCode = "404", description = "Grado no encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "404", description = "Grado no encontrado")
     })
     @GetMapping("/descripcion/{descripcion}")
     public ResponseEntity<GradoDTO> getGradoByDescripcion(
@@ -85,8 +81,7 @@ public class GradoController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Grado creado exitosamente",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = GradoDTO.class))),
-            @ApiResponse(responseCode = "400", description = "Datos de grado inválidos",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class)))
+            @ApiResponse(responseCode = "400", description = "Datos de grado inválidos")
     })
     @PostMapping
     public ResponseEntity<GradoDTO> createGrado(
@@ -99,10 +94,8 @@ public class GradoController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Grado actualizado exitosamente",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = GradoDTO.class))),
-            @ApiResponse(responseCode = "404", description = "Grado no encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
-            @ApiResponse(responseCode = "400", description = "Datos de grado inválidos",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ValidationErrorResponse.class)))
+            @ApiResponse(responseCode = "404", description = "Grado no encontrado"),
+            @ApiResponse(responseCode = "400", description = "Datos de grado inválidos")
     })
     @PutMapping("/{id}")
     public ResponseEntity<GradoDTO> updateGrado(
@@ -115,10 +108,8 @@ public class GradoController {
     @Operation(summary = "Eliminar un grado", description = "Elimina un grado escolar del sistema")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Grado eliminado exitosamente"),
-            @ApiResponse(responseCode = "404", description = "Grado no encontrado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class))),
-            @ApiResponse(responseCode = "400", description = "No se puede eliminar el grado porque tiene dependencias",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "404", description = "Grado no encontrado"),
+            @ApiResponse(responseCode = "400", description = "No se puede eliminar el grado porque tiene dependencias")
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteGrado(

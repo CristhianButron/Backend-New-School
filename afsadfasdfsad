@@ -1,0 +1,100 @@
+[33mcommit e919fefc8a01f35cf3d3b0feb3461650ff5fe6c4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mB-INS-15[m[33m)[m
+Author: A-Joaquin <arturo.veliz@ucb.edu.bo>
+Date:   Sat Apr 5 17:40:05 2025 -0400
+
+    sav
+
+[33mcommit eaa06ba4f036270455e4d128dacab683abead440[m[33m ([m[1;31morigin/B-INS-15[m[33m)[m
+Author: A-Joaquin <arturo.veliz@ucb.edu.bo>
+Date:   Thu Apr 3 12:35:55 2025 -0400
+
+    Service InscripcionGrados creado
+
+[33mcommit 4d6d9db65e13c4d74c3c1e33c60da956f0fc22aa[m[33m ([m[1;31morigin/B-INS-14[m[33m, [m[1;32mB-INS-14[m[33m)[m
+Author: A-Joaquin <arturo.veliz@ucb.edu.bo>
+Date:   Thu Apr 3 12:23:59 2025 -0400
+
+    Entidad, dto, mapper Capa repositorio de inscripcionGrados
+
+[33mcommit f9d8a6de58b5d1959ff55308657fed95d5ea4457[m[33m ([m[1;31morigin/B-GRA-12[m[33m)[m
+Author: A-Joaquin <arturo.veliz@ucb.edu.bo>
+Date:   Thu Apr 3 10:56:31 2025 -0400
+
+    Validaciones de datos, manejo de excepciones en API GRADOS
+
+[33mcommit ff6f45b9c04c80a454dbe850bb27e76afb94b080[m[33m ([m[1;31morigin/Arturo2.0[m[33m)[m
+Merge: ef5a02c 450a768
+Author: A-Joaquin <112187994+A-Joaquin@users.noreply.github.com>
+Date:   Wed Apr 2 12:44:01 2025 -0400
+
+    Merge pull request #3 from CristhianButron/B-GRA-13
+    
+    B-GRA-13 Api de grados y documentacion de grados en swagger
+
+[33mcommit 450a768645258075468c6faeac7a7bb9803bb02e[m[33m ([m[1;31morigin/B-GRA-13[m[33m)[m
+Author: arturo <arturo.veliz@ucb.edu.bo>
+Date:   Wed Apr 2 12:35:53 2025 -0400
+
+    Documentacion swagger para Grados añadida
+
+[33mcommit d62d48129601e65f2a408fbca17f350958c86fce[m
+Author: arturo <arturo.veliz@ucb.edu.bo>
+Date:   Wed Apr 2 12:28:46 2025 -0400
+
+    Creacion servicio api REST Grados
+
+[33mcommit ef5a02ccce9bc5b1e41276131e1656d5ca9d8741[m
+Author: cristhianbutron <cristhian.butron@ucb.edu.bo>
+Date:   Tue Apr 1 16:17:49 2025 -0400
+
+    cambios para hacer token en swagger
+
+[33mcommit c5f529f93f8f7a94e2d80cc770a5d50fcdf0d483[m[33m ([m[1;31morigin/Arturo[m[33m)[m
+Author: A-Joaquin <arturo.veliz@ucb.edu.bo>
+Date:   Sat Mar 29 19:20:49 2025 -0400
+
+    API de usuario ADMI,ESTUDIANTE,DOCENTE,PADRE con validacion de JWT en solicitud a la API
+
+[33mcommit 8bd645a3c55af1bee5248570dad59c9ec63a3697[m[33m ([m[1;31morigin/Cris[m[33m)[m
+Author: cristhianbutron <cristhian.butron@ucb.edu.bo>
+Date:   Tue Mar 25 16:55:40 2025 -0400
+
+    ultima modificacion de entitys completa
+
+[33mcommit da11f8282be4c62c17edbd7aa3c2494f6b531fca[m
+Author: cristhianbutron <cristhian.butron@ucb.edu.bo>
+Date:   Tue Mar 18 17:30:04 2025 -0400
+
+     creacion de la base de datos completa faltan correcciones con la entidad cursos
+
+[33mcommit 0cb13f6155334644530cc6d778bee12d114b9536[m
+Author: Cristhian Butron <cristhian.butron@ucb.edu.bo>
+Date:   Tue Mar 18 14:44:41 2025 -0400
+
+    creacion de toda la base de datos
+    
+    lanza error por que algunas entidades no estan bien definidas terminar de definir
+
+[33mcommit 9abb299cd56990147eec578a951fd881294c8c9d[m
+Author: Cristhian Butron <cristhian.butron@ucb.edu.bo>
+Date:   Sun Mar 16 22:48:12 2025 -0400
+
+    primera api de estudiantes
+
+[33mcommit 84d482c6d3004bdffee4c43cb23842a52c86dd7b[m
+Author: cristhianbutron <cristhian.butron@ucb.edu.bo>
+Date:   Tue Mar 11 12:48:30 2025 -0400
+
+    cambios en las clases principales de docente, estudiante, padres y administrativos
+
+[33mcommit 8e9bceb422e8d5d99464bf1e9bff4c4655cc558b[m
+Author: Cristhian Butron <cristhian.butron@ucb.edu.bo>
+Date:   Thu Mar 6 15:06:15 2025 -0400
+
+    Creacion de entitys para la aplicacion de springboot
+
+[33mcommit aef7ec561901c9f4b19a53cd77e524d30b57fa26[m
+Author: Cristhian Dylan Butron Perez <105839564+CristhianButron@users.noreply.github.com>
+Date:   Thu Feb 27 16:24:18 2025 -0400
+
+    Initial commit

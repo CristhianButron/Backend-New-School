@@ -2,9 +2,6 @@ package com.newschool.New.School.service;
 
 import com.newschool.New.School.dto.grado.GradoDTO;
 import com.newschool.New.School.entity.Grados;
-import com.newschool.New.School.exception.BadRequestException;
-import com.newschool.New.School.exception.ResourceNotFoundException;
-import com.newschool.New.School.exception.ValidationException;
 import com.newschool.New.School.mapper.GradoMapper;
 import com.newschool.New.School.repository.GradoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +31,14 @@ public class GradoService {
     public GradoDTO findById(Integer id) {
         return gradoRepository.findById(id)
                 .map(gradoMapper::toDTO)
-                .orElseThrow(() -> ResourceNotFoundException.gradoNotFound(id));
+                .orElse(null);
     }
 
     @Transactional(readOnly = true)
     public GradoDTO findByDescripcion(String descripcion) {
         return gradoRepository.findByDescripcion(descripcion)
                 .map(gradoMapper::toDTO)
-                .orElseThrow(() -> ResourceNotFoundException.gradoNotFoundByDescripcion(descripcion));
+                .orElse(null);
     }
 
     @Transactional(readOnly = true)
@@ -55,10 +52,9 @@ public class GradoService {
 
         // Verificar si ya existe un grado con la misma descripción
         if (gradoDTO.getDescripcion() != null) {
-            gradoRepository.findByDescripcion(gradoDTO.getDescripcion())
-                    .ifPresent(g -> {
-                        throw BadRequestException.gradoDuplicado(gradoDTO.getDescripcion());
-                    });
+            if (gradoRepository.findByDescripcion(gradoDTO.getDescripcion()).isPresent()) {
+                return null;
+            }
         }
 
         Grados grados = gradoMapper.toEntity(gradoDTO);
@@ -70,17 +66,19 @@ public class GradoService {
     public GradoDTO update(Integer id, GradoDTO gradoDTO) {
         validateGradoDTO(gradoDTO);
 
-        Grados existingGrado = gradoRepository.findById(id)
-                .orElseThrow(() -> ResourceNotFoundException.gradoNotFound(id));
+        var existingGradoOptional = gradoRepository.findById(id);
+        if (existingGradoOptional.isEmpty()) {
+            return null;
+        }
+
+        Grados existingGrado = existingGradoOptional.get();
 
         // Verificar si ya existe otro grado con la misma descripción (que no sea el actual)
         if (gradoDTO.getDescripcion() != null) {
-            gradoRepository.findByDescripcion(gradoDTO.getDescripcion())
-                    .ifPresent(g -> {
-                        if (!g.getId().equals(id)) {
-                            throw BadRequestException.gradoDuplicado(gradoDTO.getDescripcion());
-                        }
-                    });
+            var existingWithSameDesc = gradoRepository.findByDescripcion(gradoDTO.getDescripcion());
+            if (existingWithSameDesc.isPresent() && !existingWithSameDesc.get().getId().equals(id)) {
+                return null;
+            }
         }
 
         Grados updatedGrados = gradoMapper.updateEntity(existingGrado, gradoDTO);
@@ -88,37 +86,38 @@ public class GradoService {
     }
 
     @Transactional
-    public void deleteById(Integer id) {
+    public boolean deleteById(Integer id) {
         if (!gradoRepository.existsById(id)) {
-            throw ResourceNotFoundException.gradoNotFound(id);
+            return false;
         }
 
         // Aquí podrías verificar si el grado tiene alumnos asociados antes de eliminarlo
         // Por ejemplo:
         // if (alumnoRepository.existsByGradoId(id)) {
-        //     throw BadRequestException.gradoConAlumnosActivos(id);
+        //     return false;
         // }
 
         gradoRepository.deleteById(id);
+        return true;
     }
 
-    private void validateGradoDTO(GradoDTO gradoDTO) {
-        ValidationException validationException = ValidationException.createForGrado();
-
+    private boolean validateGradoDTO(GradoDTO gradoDTO) {
         if (gradoDTO.getDescripcion() == null || gradoDTO.getDescripcion().trim().isEmpty()) {
-            validationException.addError("descripcion", "La descripción no puede estar vacía");
-        } else if (gradoDTO.getDescripcion().length() < 3) {
-            validationException.addError("descripcion", "La descripción debe tener al menos 3 caracteres");
-        } else if (gradoDTO.getDescripcion().length() > 100) {
-            validationException.addError("descripcion", "La descripción no puede exceder los 100 caracteres");
+            return false;
+        }
+
+        if (gradoDTO.getDescripcion().length() < 3) {
+            return false;
+        }
+
+        if (gradoDTO.getDescripcion().length() > 100) {
+            return false;
         }
 
         if (gradoDTO.getPrimariaSencundaria() == null) {
-            validationException.addError("primariaSencundaria", "Debe especificar si es primaria o secundaria");
+            return false;
         }
 
-        if (!validationException.getErrors().isEmpty()) {
-            throw validationException;
-        }
+        return true;
     }
 }
