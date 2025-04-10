@@ -1,0 +1,54 @@
+2025-04-06 15:45:43,292 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-04-06 15:45:43,324 INFO o.s.b.StartupInfoLogger [main] Starting NewSchoolApplicationTests using Java 21.0.5 with PID 14684 (started by Gaticornio in C:\Users\Gaticornio\IdeaProjects\Backend-New-School\New-School)
+2025-04-06 15:45:43,325 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-04-06 15:45:44,041 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-06 15:45:44,118 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 67 ms. Found 7 JPA repository interfaces.
+2025-04-06 15:45:44,565 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-06 15:45:44,612 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-06 15:45:44,641 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2025-04-06 15:45:44,906 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-06 15:45:44,940 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2025-04-06 15:45:45,089 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@53fbb2b4
+2025-04-06 15:45:45,091 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2025-04-06 15:45:45,119 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-06 15:45:45,134 INFO o.h.e.j.e.i.JdbcEnvironmentInitiator [main] HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-06 15:45:46,083 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-06 15:45:46,466 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-06 15:45:46,761 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-06 15:45:47,005 INFO o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer [main] Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-04-06 15:45:47,005 WARN o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-04-06 15:45:47,379 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-06 15:45:47,685 DEBUG o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-06 15:45:48,029 INFO o.s.b.StartupInfoLogger [main] Started NewSchoolApplicationTests in 5.018 seconds (process running for 5.838)
+2025-04-06 15:45:48,439 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-06 15:45:48,441 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2025-04-06 15:45:48,444 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2025-04-06 15:50:55,714 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2025-04-06 15:50:55,729 INFO o.s.b.StartupInfoLogger [main] Starting NewSchoolApplicationTests using Java 21.0.5 with PID 20072 (started by Gaticornio in C:\Users\Gaticornio\IdeaProjects\Backend-New-School\New-School)
+2025-04-06 15:50:55,729 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-04-06 15:50:56,416 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-06 15:50:56,476 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 53 ms. Found 7 JPA repository interfaces.
+2025-04-06 15:50:56,915 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-06 15:50:56,974 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-04-06 15:50:57,001 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2025-04-06 15:50:57,222 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-06 15:50:57,247 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2025-04-06 15:50:57,408 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@194037f9
+2025-04-06 15:50:57,409 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2025-04-06 15:50:57,437 WARN o.h.e.j.d.i.DialectFactoryImpl [main] HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-06 15:50:58,371 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-06 15:50:58,713 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-06 15:50:58,982 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-04-06 15:50:59,412 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-06 15:50:59,689 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@37d92db4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7fa9e773, org.springframework.security.web.context.SecurityContextHolderFilter@1f4c7fd9, org.springframework.security.web.header.HeaderWriterFilter@49c51eb7, org.springframework.web.filter.CorsFilter@58ef1543, org.springframework.security.web.authentication.logout.LogoutFilter@7c87c960, com.newschool.New.School.security.JwtAuthenticationFilter@2df6d461, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3c6c5b44, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@68bbd5c2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7af45006, org.springframework.security.web.session.SessionManagementFilter@49e69196, org.springframework.security.web.access.ExceptionTranslationFilter@6f997702, org.springframework.security.web.access.intercept.AuthorizationFilter@191a3448]
+2025-04-06 15:51:00,008 INFO o.s.b.StartupInfoLogger [main] Started NewSchoolApplicationTests in 4.568 seconds (process running for 5.315)
+2025-04-06 15:51:00,418 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-06 15:51:00,426 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2025-04-06 15:51:00,429 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

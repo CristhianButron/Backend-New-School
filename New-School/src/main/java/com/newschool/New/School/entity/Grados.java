@@ -23,34 +23,33 @@ import lombok.ToString;
 @Entity
 @Table(name = "grados")
 @NamedQueries({
-    @NamedQuery(name = "Grados.findAll", query = "SELECT g FROM Grados g"),
-    @NamedQuery(name = "Grados.findByIdGrados", query = "SELECT g FROM Grados g WHERE g.id_grados = :id_grados"),
-    @NamedQuery(name = "Grados.findByDescripcion", query = "SELECT g FROM Grados g WHERE g.descripcion = :descripcion"),
+        @NamedQuery(name = "Grados.findAll", query = "SELECT g FROM Grados g"),
+        @NamedQuery(name = "Grados.findById", query = "SELECT g FROM Grados g WHERE g.id = :id"),
+        @NamedQuery(name = "Grados.findByDescripcion", query = "SELECT g FROM Grados g WHERE g.descripcion = :descripcion"),
 })
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-
 public class Grados implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_grado")
-    private Integer id_grados;
+    @Column(name = "id")
+    private Integer id;
 
-    @Basic (optional = false)
+    @Basic(optional = false)
     @Column(name = "descripcion")
     private String descripcion;
 
-    @Basic (optional = false)
+    @Basic(optional = false)
     @Column(name = "primaria_secundaria")
-    private String primaria_secundaria;
+    private Boolean primaria_secundaria;
 
-    @OneToMany(mappedBy = "gradosIdGrados", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "grado", fetch = FetchType.LAZY)
     private List<Inscripcion_grados> inscripcionGradosList;
-
 }
