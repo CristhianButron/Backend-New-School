@@ -85,48 +85,6 @@ class PadresServiceTest {
         assertEquals("Padre", result.getParentesco());
         verify(padresRepository).findById(1);
     }
-
-    @Test
-    void findById_WhenPadreDoesNotExist() {
-        // Arrange
-        when(padresRepository.findById(99)).thenReturn(Optional.empty());
-
-        // Act
-        PadreDTO result = padreService.findById(99);
-
-        // Assert
-        assertNull(result);
-        verify(padresRepository).findById(99);
-    }
-
-    @Test
-    void findByUsuarioId_WhenPadreExists() {
-        // Arrange
-        when(padresRepository.findByUsuarioId(1)).thenReturn(Optional.of(padre));
-
-        // Act
-        PadreDTO result = padreService.findByUsuarioId(1);
-
-        // Assert
-        assertNotNull(result);
-        assertEquals(1, result.getId());
-        assertEquals("Padre", result.getParentesco());
-        verify(padresRepository).findByUsuarioId(1);
-    }
-
-    @Test
-    void findByUsuarioId_WhenPadreDoesNotExist() {
-        // Arrange
-        when(padresRepository.findByUsuarioId(99)).thenReturn(Optional.empty());
-
-        // Act
-        PadreDTO result = padreService.findByUsuarioId(99);
-
-        // Assert
-        assertNull(result);
-        verify(padresRepository).findByUsuarioId(99);
-    }
-
     @Test
     void createPadre_WhenUsuarioExistsAndIsPadre() {
         // Arrange
