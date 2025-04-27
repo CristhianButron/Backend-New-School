@@ -68,6 +68,6 @@ public class Contenidos implements Serializable {
 
     @JoinColumn(name = "cursos_id_cursos", referencedColumnName = "id_curso")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Cursos cursoIdCurso; 
+    private Cursos curso; // Cambia de cursoIdCurso a curso para que coincida con mappedBy
     
 }

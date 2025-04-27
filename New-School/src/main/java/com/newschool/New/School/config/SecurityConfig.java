@@ -41,7 +41,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers(
-                                "/v3/api-docs/**",  // Documentación de OpenAPI 3
+                                "/v3/api-docs",  // Documentacin de OpenAPI 3
+                                "/v3/api-docs/**",  // Documentacin de OpenAPI 3
                                 "/swagger-ui/**",   // Interfaz de Swagger UI
                                 "/swagger-ui.html"  // Página principal de Swagger UI
                         ).permitAll()
@@ -61,7 +62,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*")); // Permitir cualquier origen
-        configuration.setAllowedMethods(Arrays.asList("*")); // Permitir cualquier método
+        configuration.setAllowedMethods(Arrays.asList("*")); // Permitir cualquier mtodo
         configuration.setAllowedHeaders(Arrays.asList("*")); // Permitir cualquier cabecera
         configuration.setAllowCredentials(false); // Cambiar a false cuando usas "*" en origins
 

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GradoService {
@@ -29,15 +28,17 @@ public class GradoService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<GradoDTO> findById(Integer id) {
+    public GradoDTO findById(Integer id) {
         return gradoRepository.findById(id)
-                .map(gradoMapper::toDTO);
+                .map(gradoMapper::toDTO)
+                .orElseThrow(() -> new RuntimeException("Grado no encontrado"));
     }
 
     @Transactional(readOnly = true)
-    public Optional<GradoDTO> findByDescripcion(String descripcion) {
+    public GradoDTO findByDescripcion(String descripcion) {
         return gradoRepository.findByDescripcion(descripcion)
-                .map(gradoMapper::toDTO);
+                .map(gradoMapper::toDTO)
+                .orElseThrow(() -> new RuntimeException("Grado con descripción '" + descripcion + "' no encontrado"));
     }
 
     @Transactional(readOnly = true)
@@ -47,26 +48,71 @@ public class GradoService {
 
     @Transactional
     public GradoDTO save(GradoDTO gradoDTO) {
+        validateGradoDTO(gradoDTO);
+
+        // Verificar si ya existe un grado con la misma descripción
+        if (gradoDTO.getDescripcion() != null) {
+            if (gradoRepository.findByDescripcion(gradoDTO.getDescripcion()).isPresent()) {
+                throw new RuntimeException("Ya existe un grado con la descripción: " + gradoDTO.getDescripcion());
+            }
+        }
+
         Grados grados = gradoMapper.toEntity(gradoDTO);
         Grados savedGrados = gradoRepository.save(grados);
         return gradoMapper.toDTO(savedGrados);
     }
 
     @Transactional
-    public Optional<GradoDTO> update(Integer id, GradoDTO gradoDTO) {
-        return gradoRepository.findById(id)
-                .map(grados -> {
-                    Grados updatedGrados = gradoMapper.updateEntity(grados, gradoDTO);
-                    return gradoMapper.toDTO(gradoRepository.save(updatedGrados));
-                });
+    public GradoDTO update(Integer id, GradoDTO gradoDTO) {
+        validateGradoDTO(gradoDTO);
+
+        // Verificar si el grado existe
+        Grados existingGrado = gradoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Grado no encontrado"));
+
+        // Verificar si ya existe otro grado con la misma descripción (que no sea el actual)
+        if (gradoDTO.getDescripcion() != null) {
+            var existingWithSameDesc = gradoRepository.findByDescripcion(gradoDTO.getDescripcion());
+            if (existingWithSameDesc.isPresent() && !existingWithSameDesc.get().getId().equals(id)) {
+                throw new RuntimeException("Ya existe otro grado con la descripción: " + gradoDTO.getDescripcion());
+            }
+        }
+
+        Grados updatedGrados = gradoMapper.updateEntity(existingGrado, gradoDTO);
+        return gradoMapper.toDTO(gradoRepository.save(updatedGrados));
     }
 
     @Transactional
-    public boolean deleteById(Integer id) {
+    public void deleteById(Integer id) {
+        // Verificar si el grado existe
         if (!gradoRepository.existsById(id)) {
-            return false;
+            throw new RuntimeException("Grado no encontrado");
         }
+
+        // Aquí podrías verificar si el grado tiene alumnos o inscripciones asociadas antes de eliminarlo
+        // Por ejemplo:
+        // if (inscripcionGradoRepository.existsByGradoId(id)) {
+        //     throw new RuntimeException("No se puede eliminar el grado porque tiene inscripciones asociadas");
+        // }
+
         gradoRepository.deleteById(id);
-        return true;
+    }
+
+    private void validateGradoDTO(GradoDTO gradoDTO) {
+        if (gradoDTO.getDescripcion() == null || gradoDTO.getDescripcion().trim().isEmpty()) {
+            throw new RuntimeException("La descripción del grado no puede estar vacía");
+        }
+
+        if (gradoDTO.getDescripcion().length() < 3) {
+            throw new RuntimeException("La descripción del grado debe tener al menos 3 caracteres");
+        }
+
+        if (gradoDTO.getDescripcion().length() > 100) {
+            throw new RuntimeException("La descripción del grado no puede exceder los 100 caracteres");
+        }
+
+        if (gradoDTO.getPrimariaSencundaria() == null) {
+            throw new RuntimeException("Debe especificar si el grado es de primaria o secundaria");
+        }
     }
 }
