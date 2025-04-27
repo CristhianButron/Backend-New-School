@@ -5,7 +5,6 @@
 package com.newschool.New.School.entity;
 
 import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,7 +13,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
@@ -26,12 +24,13 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "administrativo")
 @NamedQueries({
-})
+    @NamedQuery(name = "Administrativos.findAll", query = "SELECT a FROM Administrativos a"),
+    @NamedQuery(name = "Administrativos.findByIdAdministrativo", query = "SELECT a FROM Administrativos a WHERE a.idAdministrativo = :idAdministrativo"),
+    @NamedQuery(name = "Administrativos.findByCargo", query = "SELECT a FROM Administrativos a WHERE a.cargo = :cargo")})
     
 @AllArgsConstructor
 @NoArgsConstructor
@@ -47,14 +46,12 @@ public class Administrativos implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_administrativo")
     private Integer idAdministrativo;
+
     @Basic(optional = false)
     @Column(name = "Cargo")
-    private LocalDate cargo;
+    private String cargo;
+
     @JoinColumn(name = "usuarios_id_usuarios", referencedColumnName = "id_usuario")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Usuario usuarioIdUsuario;
-   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
-    private List<PadresEstudiantes> padresEstudiantesList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiantesIdEstudiantes", fetch = FetchType.LAZY)
-    private List<Respuestas> respuestasList; */
 }

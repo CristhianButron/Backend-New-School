@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Logs ###
+logs/
+*.log
+New-School/logs/
+New-School/logs/spring-boot-logger.log
