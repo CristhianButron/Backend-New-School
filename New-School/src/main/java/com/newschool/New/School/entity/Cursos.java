@@ -46,17 +46,8 @@ public class Cursos implements Serializable {
     @Column(name = "id_curso")
     private Integer id_curso; // Cambia idCurso a id_cursos para que coincida con la columna
 
-    // También agregamos un getter/setter para id que delegue a idCurso para compatibilidad
-    public Integer getId() {
-        return id_curso;
-    }
-
-    public void setId(Integer id) {
-        this.id_curso = id;
-    }
-
     @Column(name = "nombre")
-    private String nombreCurso;
+    private String nombre;
 
     @Column(name = "descripcion")
     private String descripcion;
