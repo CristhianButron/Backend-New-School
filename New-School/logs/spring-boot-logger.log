@@ -1951,3 +1951,88 @@ Caused by: java.io.EOFException: null
 2025-05-24 22:43:45,033 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-05-24 22:43:45,035 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
 2025-05-24 22:43:46,867 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2025-05-24 23:05:52,415 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2025-05-24 23:05:52,446 INFO o.s.b.StartupInfoLogger [main] Starting NewSchoolApplication using Java 21.0.5 with PID 25488 (C:\Users\Gaticornio\IdeaProjects\Backend-New-School2\New-School\target\classes started by Gaticornio in C:\Users\Gaticornio\IdeaProjects\Backend-New-School2)
+2025-05-24 23:05:52,447 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-05-24 23:05:53,212 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-24 23:05:53,286 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 67 ms. Found 8 JPA repository interfaces.
+2025-05-24 23:05:53,766 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2025-05-24 23:05:53,775 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-24 23:05:53,777 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2025-05-24 23:05:53,777 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.20]
+2025-05-24 23:05:53,834 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2025-05-24 23:05:53,835 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1358 ms
+2025-05-24 23:05:53,981 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-24 23:05:54,047 INFO o.h.Version [main] HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-05-24 23:05:54,078 INFO o.h.c.i.RegionFactoryInitiator [main] HHH000026: Second-level cache disabled
+2025-05-24 23:05:54,285 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-24 23:05:54,308 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2025-05-24 23:05:56,606 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@fee881
+2025-05-24 23:05:56,608 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2025-05-24 23:05:58,514 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-24 23:06:08,600 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-24 23:06:08,870 INFO o.s.d.j.r.q.QueryEnhancerFactory [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-24 23:06:09,009 DEBUG o.s.w.f.GenericFilterBean [main] Filter 'jwtAuthenticationFilter' configured for use
+2025-05-24 23:06:09,418 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-24 23:06:09,674 INFO o.s.s.w.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@bba6542, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14ab3e22, org.springframework.security.web.context.SecurityContextHolderFilter@10a199e0, org.springframework.security.web.header.HeaderWriterFilter@2a38b5c7, org.springframework.web.filter.CorsFilter@7fd4682, org.springframework.security.web.authentication.logout.LogoutFilter@732d2b59, com.newschool.New.School.security.JwtAuthenticationFilter@3d2bcf0a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@70a7ebc9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1752ab9b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3057a923, org.springframework.security.web.session.SessionManagementFilter@1159a049, org.springframework.security.web.access.ExceptionTranslationFilter@992f314, org.springframework.security.web.access.intercept.AuthorizationFilter@7d6c4c43]
+2025-05-24 23:06:09,911 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2025-05-24 23:06:09,926 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path ''
+2025-05-24 23:06:09,934 INFO o.s.b.StartupInfoLogger [main] Started NewSchoolApplication in 17.915 seconds (process running for 18.28)
+2025-05-24 23:06:21,070 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-24 23:06:21,070 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2025-05-24 23:06:21,072 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 0 ms
+2025-05-24 23:06:21,084 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-1] Securing GET /swagger-ui/index.html
+2025-05-24 23:06:21,089 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-1] Processing request: /swagger-ui/index.html
+2025-05-24 23:06:21,090 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-1] Skipping JWT authentication for path: /swagger-ui/index.html
+2025-05-24 23:06:21,092 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-1] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:06:21,093 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-1] Secured GET /swagger-ui/index.html
+2025-05-24 23:06:21,125 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-2] Securing GET /swagger-ui/swagger-ui.css
+2025-05-24 23:06:21,125 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-4] Securing GET /swagger-ui/index.css
+2025-05-24 23:06:21,126 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-4] Processing request: /swagger-ui/index.css
+2025-05-24 23:06:21,126 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-2] Processing request: /swagger-ui/swagger-ui.css
+2025-05-24 23:06:21,126 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-6] Securing GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-05-24 23:06:21,126 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-4] Skipping JWT authentication for path: /swagger-ui/index.css
+2025-05-24 23:06:21,126 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-5] Securing GET /swagger-ui/swagger-initializer.js
+2025-05-24 23:06:21,126 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-2] Skipping JWT authentication for path: /swagger-ui/swagger-ui.css
+2025-05-24 23:06:21,126 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-6] Processing request: /swagger-ui/swagger-ui-standalone-preset.js
+2025-05-24 23:06:21,126 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-4] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:06:21,126 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-6] Skipping JWT authentication for path: /swagger-ui/swagger-ui-standalone-preset.js
+2025-05-24 23:06:21,126 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-3] Securing GET /swagger-ui/swagger-ui-bundle.js
+2025-05-24 23:06:21,126 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-5] Processing request: /swagger-ui/swagger-initializer.js
+2025-05-24 23:06:21,126 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-2] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:06:21,126 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-6] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:06:21,127 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-3] Processing request: /swagger-ui/swagger-ui-bundle.js
+2025-05-24 23:06:21,127 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-2] Secured GET /swagger-ui/swagger-ui.css
+2025-05-24 23:06:21,127 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-5] Skipping JWT authentication for path: /swagger-ui/swagger-initializer.js
+2025-05-24 23:06:21,127 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-4] Secured GET /swagger-ui/index.css
+2025-05-24 23:06:21,127 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-6] Secured GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-05-24 23:06:21,127 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-3] Skipping JWT authentication for path: /swagger-ui/swagger-ui-bundle.js
+2025-05-24 23:06:21,127 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-5] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:06:21,127 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-3] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:06:21,127 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-5] Secured GET /swagger-ui/swagger-initializer.js
+2025-05-24 23:06:21,127 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-3] Secured GET /swagger-ui/swagger-ui-bundle.js
+2025-05-24 23:06:21,274 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-7] Securing GET /v3/api-docs/swagger-config
+2025-05-24 23:06:21,275 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-7] Processing request: /v3/api-docs/swagger-config
+2025-05-24 23:06:21,275 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-7] Skipping JWT authentication for path: /v3/api-docs/swagger-config
+2025-05-24 23:06:21,275 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-7] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:06:21,275 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-7] Secured GET /v3/api-docs/swagger-config
+2025-05-24 23:06:21,317 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-8] Securing GET /v3/api-docs
+2025-05-24 23:06:21,317 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-8] Processing request: /v3/api-docs
+2025-05-24 23:06:21,318 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-8] Skipping JWT authentication for path: /v3/api-docs
+2025-05-24 23:06:21,318 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-8] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:06:21,318 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-8] Secured GET /v3/api-docs
+2025-05-24 23:06:21,954 INFO o.s.a.AbstractOpenApiResource [http-nio-8080-exec-8] Init duration for springdoc-openapi is: 624 ms
+2025-05-24 23:06:29,178 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-9] Securing POST /api/v1/auth/register
+2025-05-24 23:06:29,179 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-9] Processing request: /api/v1/auth/register
+2025-05-24 23:06:29,180 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-9] Skipping JWT authentication for path: /api/v1/auth/register
+2025-05-24 23:06:29,180 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-9] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:06:29,180 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-9] Secured POST /api/v1/auth/register
+2025-05-24 23:14:43,304 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-3] Securing POST /api/v1/auth/login
+2025-05-24 23:14:43,305 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-3] Processing request: /api/v1/auth/login
+2025-05-24 23:14:43,306 DEBUG c.n.N.S.s.JwtAuthenticationFilter [http-nio-8080-exec-3] Skipping JWT authentication for path: /api/v1/auth/login
+2025-05-24 23:14:43,306 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-3] Set SecurityContextHolder to anonymous SecurityContext
+2025-05-24 23:14:43,306 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-3] Secured POST /api/v1/auth/login
+2025-05-24 23:14:43,808 DEBUG o.s.s.a.d.AbstractUserDetailsAuthenticationProvider [http-nio-8080-exec-3] Failed to find user 'usuario@example.com'
+2025-05-24 23:26:51,011 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-24 23:26:51,014 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2025-05-24 23:26:52,826 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

@@ -40,7 +40,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/health", "/status").permitAll() // Endpoints para monitoreo
+                        .requestMatchers("/health", "/status","/health1").permitAll() // Endpoints para monitoreo
                         .requestMatchers(
                                 "/v3/api-docs",  // Documentacin de OpenAPI 3
                                 "/v3/api-docs/**",  // Documentacin de OpenAPI 3
