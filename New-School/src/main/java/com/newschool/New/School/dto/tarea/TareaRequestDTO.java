@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -13,6 +12,8 @@ import java.time.LocalDateTime;
 public class TareaRequestDTO {
     private String titulo;
     private String descripcion;
-    private LocalDateTime fechaEntrega;
+    private String archivo;
+    private String fecha_entrega;
+    private int puntaje_maximo;
     private Integer cursoId;
 }

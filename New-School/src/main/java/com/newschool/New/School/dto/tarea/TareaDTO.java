@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -14,7 +13,8 @@ public class TareaDTO {
     private Integer id;
     private String titulo;
     private String descripcion;
-    private LocalDateTime fechaCreacion;
-    private LocalDateTime fechaEntrega;
+    private String archivo;
+    private String fecha_entrega;
+    private int puntaje_maximo;
     private Integer cursoId;
 }
