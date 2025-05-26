@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -14,8 +14,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class RespuestaResponseDTO {
     private Integer id;
-    private String contenido;
-    private LocalDateTime fechaEnvio;
+    private String respuesta;
+    private String archivo;
+    private int puntaje;
+    private LocalDate fechaEntrega;
     private TareaDTO tarea;
     private EstudianteDTO estudiante;
     private boolean tieneArchivo;
