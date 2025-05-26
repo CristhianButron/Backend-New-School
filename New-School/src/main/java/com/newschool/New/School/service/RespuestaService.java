@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -37,7 +37,9 @@ public class RespuestaService {
      */
     @Transactional(readOnly = true)
     public List<RespuestaDTO> findAll() {
-        return respuestaMapper.toDTOList(respuestaRepository.findAll());
+        return respuestaRepository.findAll().stream()
+                .map(respuestaMapper::toDTO)
+                .toList();
     }
 
     /**
@@ -55,7 +57,9 @@ public class RespuestaService {
      */
     @Transactional(readOnly = true)
     public List<RespuestaDTO> findByTareaId(Integer tareaId) {
-        return respuestaMapper.toDTOList(respuestaRepository.findByTareaId(tareaId));
+        return respuestaRepository.findByTareaId(tareaId).stream()
+                .map(respuestaMapper::toDTO)
+                .toList();
     }
 
     /**
@@ -63,7 +67,9 @@ public class RespuestaService {
      */
     @Transactional(readOnly = true)
     public List<RespuestaDTO> findByEstudianteId(Integer estudianteId) {
-        return respuestaMapper.toDTOList(respuestaRepository.findByEstudianteIdEstudiante(estudianteId));
+        return respuestaRepository.findByEstudianteIdEstudiante(estudianteId).stream()
+                .map(respuestaMapper::toDTO)
+                .toList();
     }
 
     /**
@@ -92,7 +98,7 @@ public class RespuestaService {
         Respuestas respuesta = new Respuestas();
         respuesta.setRespuesta(requestDTO.getRespuesta());
         respuesta.setArchivo(requestDTO.getArchivo());
-        respuesta.setFechaEntrega(LocalDateTime.now());
+        respuesta.setFechaEntrega(LocalDate.now());
         respuesta.setTareasIdTareas(tarea);
         respuesta.setEstudiantesIdEstudiantes(estudiante);
 
@@ -117,7 +123,7 @@ public class RespuestaService {
         if (requestDTO.getArchivo() != null) {
             respuesta.setArchivo(requestDTO.getArchivo());
         }
-        respuesta.setFechaEntrega(LocalDateTime.now());
+        respuesta.setFechaEntrega(LocalDate.now());
 
         respuesta = respuestaRepository.save(respuesta);
         return respuestaMapper.toResponseDTO(respuesta);
@@ -135,7 +141,7 @@ public class RespuestaService {
         Respuestas respuesta = respuestaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Respuesta no encontrada"));
 
-        respuesta.setPuntaje(calificacion);
+        respuesta.setPuntaje(calificacion.intValue());
         respuesta = respuestaRepository.save(respuesta);
 
         return respuestaMapper.toResponseDTO(respuesta);

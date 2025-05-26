@@ -73,7 +73,7 @@ public class RespuestaController {
             @RequestPart(value = "archivo", required = false) MultipartFile archivo) {
         try {
             if (archivo != null) {
-                respuestaRequestDTO.setArchivo(archivo.getBytes());
+                respuestaRequestDTO.setArchivo(new String(archivo.getBytes()));
             }
             RespuestaResponseDTO createdRespuesta = respuestaService.crear(respuestaRequestDTO);
             return new ResponseEntity<>(createdRespuesta, HttpStatus.CREATED);
@@ -96,7 +96,7 @@ public class RespuestaController {
             @RequestPart(value = "archivo", required = false) MultipartFile archivo) {
         try {
             if (archivo != null) {
-                respuestaRequestDTO.setArchivo(archivo.getBytes());
+                respuestaRequestDTO.setArchivo(new String(archivo.getBytes()));
             }
             RespuestaResponseDTO updatedRespuesta = respuestaService.actualizar(id, respuestaRequestDTO);
             if (updatedRespuesta != null) {
