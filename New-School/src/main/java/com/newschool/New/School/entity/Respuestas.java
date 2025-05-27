@@ -50,7 +50,7 @@ public class Respuestas implements Serializable {
 
     @Basic(optional = true)
     @Column(name = "archivo")
-    private Blob archivo;
+    private String archivo;
 
     @Basic(optional = false)
     @Column(name = "puntaje")
