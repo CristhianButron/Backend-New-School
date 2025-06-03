@@ -15,5 +15,5 @@ public class TareaRequestDTO {
     private String archivo;
     private String fecha_entrega;
     private int puntaje_maximo;
-    private Integer cursoId;
+    private Integer cursoId; // Representa el id del curso asociado
 }

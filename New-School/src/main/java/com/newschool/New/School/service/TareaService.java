@@ -32,6 +32,11 @@ public class TareaService {
     public List<TareaDTO> findAll() {
         return tareaMapper.toDTOList(tareaRepository.findAll());
     }
+    
+    @Transactional(readOnly = true)
+    public List<TareaResponseDTO> findAllResponse() {
+        return tareaMapper.toResponseDTOList(tareaRepository.findAll());
+    }
 
     @Transactional(readOnly = true)
     public TareaDTO findById(Integer id) {
@@ -39,10 +44,12 @@ public class TareaService {
                 .map(tareaMapper::toDTO)
                 .orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
     }
-
+    
     @Transactional(readOnly = true)
-    public List<TareaDTO> findByCursoId(Integer cursoId) {
-        return tareaMapper.toDTOList(tareaRepository.findByCursoId_curso(cursoId));
+    public TareaResponseDTO findByIdResponse(Integer id) {
+        return tareaRepository.findById(id)
+                .map(tareaMapper::toResponseDTO)
+                .orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
     }
 
     @Transactional
@@ -53,10 +60,6 @@ public class TareaService {
             Cursos curso = cursoRepository.findById(requestDTO.getCursoId())
                     .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
             
-            // Verificar si ya existe una tarea con el mismo título en el mismo curso
-            if (tareaRepository.findByTituloAndCursoIdCurso(requestDTO.getTitulo(), requestDTO.getCursoId()).isPresent()) {
-                throw new RuntimeException("Ya existe una tarea con el mismo título en este curso");
-            }
             
             Tareas tarea = tareaMapper.toEntity(requestDTO, curso);
             tarea = tareaRepository.save(tarea);
@@ -77,17 +80,10 @@ public class TareaService {
         if (requestDTO.getCursoId() != null) {
             Cursos curso = cursoRepository.findById(requestDTO.getCursoId())
                     .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
-            
-            // Verificar si ya existe otra tarea con el mismo título en el nuevo curso
-            var existingTarea = tareaRepository.findByTituloAndCursoIdCurso(requestDTO.getTitulo(), requestDTO.getCursoId());
-            if (existingTarea.isPresent() && !existingTarea.get().getId_tarea().equals(id)) {
-                throw new RuntimeException("Ya existe otra tarea con el mismo título en este curso");
-            }
-            
             tarea.setCurso(curso);
         }
 
-        tareaMapper.updateEntity(tarea, requestDTO);
+        tarea = tareaMapper.updateEntity(tarea, requestDTO);
         tarea = tareaRepository.save(tarea);
         return tareaMapper.toResponseDTO(tarea);
     }
@@ -97,13 +93,6 @@ public class TareaService {
         if (!tareaRepository.existsById(id)) {
             throw new RuntimeException("Tarea no encontrada");
         }
-
-        // Aquí podrías agregar verificaciones adicionales antes de eliminar
-        // Por ejemplo, verificar si hay respuestas asociadas
-        // if (respuestaRepository.existsByTareaId(id)) {
-        //     throw new RuntimeException("No se puede eliminar la tarea porque tiene respuestas asociadas");
-        // }
-
         tareaRepository.deleteById(id);
     }
 
@@ -132,7 +121,7 @@ public class TareaService {
             throw new RuntimeException("El ID del curso es requerido");
         }
 
-        if ( requestDTO.getPuntaje_maximo() <= 0) {
+        if (requestDTO.getPuntaje_maximo() <= 0) {
             throw new RuntimeException("El puntaje máximo debe ser mayor que 0");
         }
     }
