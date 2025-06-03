@@ -106,7 +106,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-	</dependencies>
+    
+    <!-- Spring Mail para envío de correos -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-mail</artifactId>
+    </dependency>
+</dependencies>
 
 	<build>
 		<plugins>
