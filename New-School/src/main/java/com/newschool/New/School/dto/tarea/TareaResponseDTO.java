@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TareaResponseDTO {
-    private Integer id;
+    private Integer id_tarea; // Cambiado de id a id_tarea para coincidir con la entidad
     private String titulo;
     private String descripcion;
     private String archivo;
     private String fecha_entrega;
     private int puntaje_maximo;
-    private CursoDTO curso;
+    private CursoDTO curso; // Objeto curso completo para la respuesta
 }

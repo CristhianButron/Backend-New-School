@@ -23,7 +23,7 @@ public class TareaMapper {
         }
 
         return TareaDTO.builder()
-                .id(tarea.getId_tarea())
+                .id_tarea(tarea.getId_tarea())
                 .titulo(tarea.getTitulo())
                 .descripcion(tarea.getDescripcion())
                 .archivo(tarea.getArchivo())
@@ -48,7 +48,7 @@ public class TareaMapper {
         }
 
         return TareaResponseDTO.builder()
-                .id(tarea.getId_tarea())
+                .id_tarea(tarea.getId_tarea())
                 .titulo(tarea.getTitulo())
                 .descripcion(tarea.getDescripcion())
                 .archivo(tarea.getArchivo())
@@ -56,6 +56,15 @@ public class TareaMapper {
                 .puntaje_maximo(tarea.getPuntaje_maximo())
                 .curso(cursoMapper.toDTO(tarea.getCurso()))
                 .build();
+    }
+
+    public List<TareaResponseDTO> toResponseDTOList(List<Tareas> tareas) {
+        if (tareas == null) {
+            return List.of();
+        }
+        return tareas.stream()
+                .map(this::toResponseDTO)
+                .collect(Collectors.toList());
     }
 
     public Tareas toEntity(TareaRequestDTO dto, Cursos curso) {
@@ -74,9 +83,26 @@ public class TareaMapper {
         return tarea;
     }
 
-    public void updateEntity(Tareas tarea, TareaRequestDTO dto) {
+    public Tareas toEntity(TareaDTO dto, Cursos curso) {
+        if (dto == null) {
+            return null;
+        }
+
+        Tareas tarea = new Tareas();
+        tarea.setId_tarea(dto.getId_tarea());
+        tarea.setTitulo(dto.getTitulo());
+        tarea.setDescripcion(dto.getDescripcion());
+        tarea.setArchivo(dto.getArchivo());
+        tarea.setFecha_entrega(dto.getFecha_entrega());
+        tarea.setPuntaje_maximo(dto.getPuntaje_maximo());
+        tarea.setCurso(curso);
+
+        return tarea;
+    }
+
+    public Tareas updateEntity(Tareas tarea, TareaRequestDTO dto) {
         if (dto == null || tarea == null) {
-            return;
+            return tarea;
         }
 
         if (dto.getTitulo() != null) {
@@ -94,5 +120,7 @@ public class TareaMapper {
         if (dto.getPuntaje_maximo() > 0) {
             tarea.setPuntaje_maximo(dto.getPuntaje_maximo());
         }
+        
+        return tarea;
     }
 }

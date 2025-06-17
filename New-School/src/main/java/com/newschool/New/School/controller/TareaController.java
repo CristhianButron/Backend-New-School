@@ -31,6 +31,12 @@ public class TareaController {
     public ResponseEntity<List<TareaDTO>> listaTareas() {
         return ResponseEntity.ok(tareaService.findAll());
     }
+    
+    @GetMapping("/detalle")
+    @Operation(summary = "Obtener todas las tareas con detalles")
+    public ResponseEntity<List<TareaResponseDTO>> listaTareasDetalle() {
+        return ResponseEntity.ok(tareaService.findAllResponse());
+    }
 
     @GetMapping("/{id}")
     @Operation(summary = "Obtener una tarea por ID")
@@ -45,13 +51,22 @@ public class TareaController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    @GetMapping("/curso/{cursoId}")
-    @Operation(summary = "Obtener tareas por curso")
-    public ResponseEntity<List<TareaDTO>> getTareasByCursoId(@PathVariable Integer cursoId) {
-        return ResponseEntity.ok(tareaService.findByCursoId(cursoId));
+    
+    @GetMapping("/detalle/{id}")
+    @Operation(summary = "Obtener una tarea por ID con detalles")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Tarea encontrada"),
+            @ApiResponse(responseCode = "404", description = "Tarea no encontrada")
+    })
+    public ResponseEntity<TareaResponseDTO> getTareaDetalleById(@PathVariable Integer id) {
+        try {
+            return ResponseEntity.ok(tareaService.findByIdResponse(id));
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
+  
     @PostMapping
     @Operation(summary = "Crear una nueva tarea")
     @ApiResponses(value = {
