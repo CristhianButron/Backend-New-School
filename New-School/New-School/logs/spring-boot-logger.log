@@ -4088,3 +4088,6 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 2025-06-17 12:57:41,539 DEBUG o.s.s.w.FilterChainProxy [http-nio-8080-exec-2] Securing POST /error
 2025-06-17 12:57:41,539 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter [http-nio-8080-exec-2] Set SecurityContextHolder to anonymous SecurityContext
 2025-06-17 12:57:41,539 DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint [http-nio-8080-exec-2] Pre-authenticated entry point called. Rejecting access
+2025-06-17 13:00:12,113 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 13:00:12,117 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2025-06-17 13:00:14,230 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
